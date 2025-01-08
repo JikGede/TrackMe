@@ -20,7 +20,6 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Initialize form
     this.registerForm = this.formBuilder.group({
       customerName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]], // Email dengan validasi format

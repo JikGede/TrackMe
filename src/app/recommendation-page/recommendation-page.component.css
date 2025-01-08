@@ -1,0 +1,107 @@
+.container {
+    padding: 1rem;
+  }
+  
+  .welcome-header{
+    margin-top:120px;
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    color: #4caf50;
+    border-bottom: 2px solid #4caf50;
+    padding-bottom: 0.5rem;
+  }
+
+  #historical-activity h2
+  {
+    margin-top: 50px;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 1rem); /* Responsive for 3 cards in a row */
+  }
+  
+  .card h3 {
+    margin: 0 0 0.5rem;
+  }
+  
+  .card p {
+    margin: 0;
+  }
+  
+  #insights ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+  
+  #insights button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  #insights button:hover {
+    transform: scale(1.1);
+  }
+  
+  .recommendation {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recommendation h3 {
+    margin: 0 0 0.5rem;
+  }
+  
+  .recommendation p {
+    margin: 0 0 1rem;
+  }
+  
+  .recommendation button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .recommendation button:hover {
+    background: #45a049;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      flex: 1 1 calc(50% - 1rem); /* Two cards in a row on tablets */
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card {
+      flex: 1 1 100%; /* Full-width cards on mobile */
+    }
+  }
+  

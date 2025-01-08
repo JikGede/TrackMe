@@ -1,62 +1,68 @@
 <div class="container mt-5">
-  <!-- No Data Warning Message -->
-  <div class="alert alert-warning">
-      <p><strong>No activity data found!</strong> Please update your daily activity log.</p>
-      <a href="/activity-log" class="btn btn-primary" routerLink="/DailyActivity">Go to Activity Log</a>
-  </div>
+    <!-- No Data Warning Message -->
+    <div *ngIf="!dailyActivityData" class="alert alert-warning">
+        <p><strong>No activity data found!</strong> Please update your daily activity log.</p>
+        <a href="/activity-log" class="btn btn-primary" routerLink="/DailyActivity">Go to Activity Log</a>
+    </div>
 </div>
 
-<!-- Chart (outside of card, at the top) -->
+<br><br><br>
+
+<!-- Chart (hidden until data is available) -->
 <div class="chart-container mt-5" style="width: 100%; max-width: 600px; margin: 0 auto;">
-  <canvas id="myChart"></canvas>
+    <canvas id="myChart" [hidden]="!dailyActivityData"></canvas>
 </div>
+
 
 <!-- Dashboard Data (Inside Card) -->
-<div class="container py-5">
-  <div class="row justify-content-center">
-      <div class="col-md-10">
-          <div class="card mt-">
-              <div class="card-body">
-                  <!-- Total Carbon Footprint -->
-                  <div class="mb-4">
-                      <h3><strong>Total Carbon Footprint:</strong> 100 kg CO₂</h3>
-                  </div>
+<div *ngIf="dailyActivityData" class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card mt-">
+                <div class="card-body">
+                    <!-- Total Carbon Footprint -->
+                    <div class="mb-4">
+                        <h3><strong>Total Carbon Footprint:</strong> {{ totalCarbonFootprint }} kg CO₂</h3>
+                        <p><strong>Date:</strong> {{ dailyActivityDate || 'Not Provided' }}</p>
+                    </div>
 
-                  <!-- Emissions Breakdown -->
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div class="card">
-                              <div class="card-body">
-                                  <h6>Transportation</h6>
-                                  <p>50 kg CO₂</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="card">
-                              <div class="card-body">
-                                  <h6>Energy Usage</h6>
-                                  <p>30 kg CO₂</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="card">
-                              <div class="card-body">
-                                  <h6>Dietary Preference</h6>
-                                  <p>20 kg CO₂</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                    <!-- Emissions Breakdown -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Transportation</h6>
+                                    <p>{{ dailyActivityData?.transportationModels || 'Not Provided' }}</p>
+                                    <p>{{ transportationCarbon }} kg CO₂</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Energy Usage</h6>
+                                    <p>{{ dailyActivityData?.energyUsage || 'Not Provided' }}</p>
+                                    <p>{{ energyUsageCarbon }} kg CO₂</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>Dietary Preference</h6>
+                                    <p>{{ dailyActivityData?.meals || 'Not Provided' }}</p>
+                                    <p>{{ dietaryPreferenceCarbon }} kg CO₂</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-                  <!-- Action buttons -->
-                  <div class="mt-4" >
-                      <button class="btn btn-primary" routerLink="/DailyActivity">Update Activity Log</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                    <!-- Action buttons -->
+                    <div class="mt-4">
+                        <button class="btn btn-primary" routerLink="/DailyActivity">Update Activity Log</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

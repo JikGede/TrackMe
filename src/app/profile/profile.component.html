@@ -1,0 +1,78 @@
+<body>
+    <!-- Profile Section -->
+    <section>
+      <div class="container py-4 mt-">
+        <div class="text-left">
+          <h2>Welcome, {{ customerName || 'Guest' }}!</h2>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Card Section -->
+    <section class="mb-5">
+      <div class="container">
+        <div class="container py-4 mt-5">
+            <div class="text-left">
+              <h2>Welcome, {{ customerName || 'Guest' }}!</h2>
+            </div>
+          </div>
+        <div class="card shadow-lg">
+          <div class="row g-0">
+            <!-- Gambar di sebelah kiri -->
+            <div class="col-lg-4 text-center p-4">
+              <img src="assets/img/profile.jpg" alt="Profile Picture" class="img-fluid rounded mt-5" style="max-width: 250px; height: 250px; object-fit: cover;">
+            </div>
+  
+            <!-- Informasi di sebelah kanan -->
+            <div class="col-lg-8 p-4">
+              <h4 class="fw-bold text-dark">User Information</h4>
+              <hr>
+              <p><strong>Username:</strong> {{ customerName || 'Guest' }}</p>
+              <p><strong>Email:</strong> {{ email ? email : 'Not available' }}</p>
+              <p><strong>Contact Number:</strong> {{ contactNumber }}</p>
+              <hr>
+  
+              <!-- Form untuk Daily Activity -->
+              <form [formGroup]="dailyActivityForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="transportationModels" class="form-label">Transportation Modes <span class="text-danger">*</span></label>
+                  <select class="form-select" id="transportationModels" formControlName="transportationModels" required>
+                    <option value="" disabled selected>Select transportation</option>
+                    <option value="public">Public Transportation</option>
+                    <option value="walk">Walk</option>
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                    <option value="motorcycle">Motorcycle</option>
+                  </select>
+                </div>
+  
+                <div class="mb-3">
+                  <label for="energyUsage" class="form-label">Energy Sources <span class="text-danger">*</span></label>
+                  <select class="form-select" id="energyUsage" formControlName="energyUsage" required>
+                    <option value="" disabled selected>Select energy sources</option>
+                    <option value="electricity">Electricity</option>
+                    <option value="solar">Solar</option>
+                    <option value="wind">Wind</option>
+                    <option value="hydropower">Hydropower</option>
+                  </select>
+                </div>
+  
+                <div class="mb-3">
+                  <label for="meals" class="form-label">Dietary Preference <span class="text-danger">*</span></label>
+                  <select class="form-select" id="meals" formControlName="meals" required>
+                    <option value="" disabled selected>Select dietary preference</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="gluten_free">Gluten-Free</option>
+                    <option value="high_calorie">High-Calorie Diet</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn custom-btn w-100">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  

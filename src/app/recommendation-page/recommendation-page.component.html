@@ -1,0 +1,49 @@
+<div class="container">
+    <!-- Tambahkan bagian sapaan -->
+    <header class="welcome-header">
+      <h1>Welcome, {{ customerName }}!</h1>
+      <p>Here are your insights and recommendations.</p>
+    </header>
+    
+    <!-- Historical Activity Section -->
+    <section id="historical-activity">
+      <h2>Historical Activity</h2>
+      <div class="cards">
+        <div class="card" *ngFor="let activity of historicalActivities; let i = index">
+          <h3>{{ activity.title }}</h3>
+          <p>{{ activity.description }}</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Insights Section -->
+    <section id="insights">
+      <h2>Environmental Impact Insights</h2>
+      <div class="insight-card">
+        <p><strong>Note:</strong> This page will display the highlight of your daily activity after already calculate your carbon footprint</p>
+      </div>
+    </section>
+  
+    <!-- Personalized Recommendations Section -->
+    <section id="recommendations">
+      <h2>Personalized Recommendations</h2>
+      <div
+        class="recommendation"
+        *ngFor="let recommendation of recommendations"
+      >
+        <h3>{{ recommendation.title }}</h3>
+        <p>{{ recommendation.description }}</p>
+        <p><strong>Details:</strong> {{ recommendation.detail }}</p>
+        <p><strong>Benefits:</strong></p>
+        <ul>
+          <li *ngFor="let benefit of recommendation.benefits">{{ benefit }}</li>
+        </ul>
+        <p><strong>Tips:</strong></p>
+        <ul>
+          <li *ngFor="let tip of recommendation.tips">{{ tip }}</li>
+        </ul>
+        <button (click)="onLearnMore(recommendation.title)">Learn More</button>
+      </div>
+    </section>
+  </div>
+  

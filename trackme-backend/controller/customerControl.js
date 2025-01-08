@@ -38,20 +38,27 @@ const loginCustomer = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Menemukan customer berdasarkan email
     const customer = await Customer.findOne({ email });
     if (!customer) {
-      return res.status(401).json({ message: 'Email atau password salah' });
+      return res.status(401).json({ message: 'Invalid Email or Password' });
     }
 
-    // Membandingkan password yang dimasukkan dengan yang ada di database
     const isPasswordMatch = await bcrypt.compare(password, customer.password);
     if (!isPasswordMatch) {
       return res.status(401).json({ message: 'Email atau password salah' });
     }
 
-    // Membuat JWT token
-    const token = jwt.sign({ customerID: customer.customerID, email: customer.email }, 'secret_key', { expiresIn: '1h' });
+    //JWT token
+    const token = jwt.sign(
+      {
+        customerID: customer.customerID,
+        email: customer.email,
+        customerName: customer.customerName, 
+        contactNumber: customer.contactNumber
+      },
+      'secret_key',
+      { expiresIn: '1h' }
+    );
 
     res.json({ message: 'Login berhasil', token });
   } catch (error) {

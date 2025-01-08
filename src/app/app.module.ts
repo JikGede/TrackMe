@@ -14,6 +14,8 @@ import { DailyActivityComponent } from './daily-activity/daily-activity.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { DailyActivityService } from './services/daily-activity.service';
+import { RecommendationPageComponent } from './recommendation-page/recommendation-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DailyActivityService } from './services/daily-activity.service';
     FooterComponent,
     DailyActivityComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    RecommendationPageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
